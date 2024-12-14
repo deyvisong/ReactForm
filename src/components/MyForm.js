@@ -6,6 +6,7 @@ const MyForm = ({ user }) => {
   // 3 - Data management
   const [name, setName] = useState(user ? user.name : "");
   const [email, setEmail] = useState(user ? user.email : "");
+  const [bio, setBio] = useState("");
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -16,7 +17,7 @@ const MyForm = ({ user }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Sending form");
-    console.log(name, email);
+    console.log(name + "\n" + email + "\n" + bio);
 
     // validation
     // sent
@@ -24,6 +25,7 @@ const MyForm = ({ user }) => {
     // 7 - Clean form
     setName("");
     setEmail("");
+    setBio("");
   };
 
   return (
@@ -34,6 +36,7 @@ const MyForm = ({ user }) => {
         <div>
           <label htmlFor="name">Name: </label>
           <input
+            id="name"
             type="text"
             name="name"
             placeholder="Insert your name"
@@ -41,10 +44,12 @@ const MyForm = ({ user }) => {
             value={name}
           />
         </div>
-        <label>
+        {/* 2 - label with input */}
+        <label htmlFor="email">
           {/* 4 - Simplify state manipulation */}
           <span>E-mail: </span>
           <input
+            id="email"
             type="email"
             name="email"
             placeholder="Insert your email"
@@ -52,6 +57,15 @@ const MyForm = ({ user }) => {
             value={email}
           />
         </label>
+        {/* 8 - textarea */}
+        <span>Bio:</span>
+        <textarea
+          id="bio"
+          name="bio"
+          placeholder="User description"
+          onChange={(e) => setBio(e.target.value)}
+          value={bio}
+        ></textarea>
         <input className="buttondek" type="submit" value="Register!" />
       </form>
     </div>
