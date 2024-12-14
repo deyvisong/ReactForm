@@ -17,6 +17,13 @@ const MyForm = ({ user }) => {
     event.preventDefault();
     console.log("Sending form");
     console.log(name, email);
+
+    // validation
+    // sent
+
+    // 7 - Clean form
+    setName("");
+    setEmail("");
   };
 
   return (
