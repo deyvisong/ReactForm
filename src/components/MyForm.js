@@ -1,10 +1,11 @@
 import "./MyForm.css";
 import { useState } from "react";
 
-const MyForm = () => {
-  // 3 Data management
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+const MyForm = ({ user }) => {
+  // 6 - Controlled inputs
+  // 3 - Data management
+  const [name, setName] = useState(user ? user.name : "");
+  const [email, setEmail] = useState(user ? user.email : "");
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -30,6 +31,7 @@ const MyForm = () => {
             name="name"
             placeholder="Insert your name"
             onChange={handleName}
+            value={name}
           />
         </div>
         <label>
@@ -40,6 +42,7 @@ const MyForm = () => {
             name="email"
             placeholder="Insert your email"
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
         </label>
         <input className="buttondek" type="submit" value="Register!" />
