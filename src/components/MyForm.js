@@ -26,6 +26,7 @@ const MyForm = () => {
           />
         </div>
         <label>
+          {/* 4 - Simplify state manipulation */}
           <span>E-mail: </span>
           <input
             type="email"
