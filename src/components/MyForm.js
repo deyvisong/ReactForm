@@ -6,7 +6,8 @@ const MyForm = ({ user }) => {
   // 3 - Data management
   const [name, setName] = useState(user ? user.name : "");
   const [email, setEmail] = useState(user ? user.email : "");
-  const [bio, setBio] = useState("");
+  const [bio, setBio] = useState(user ? user.bio : "");
+  const [role, setRole] = useState(user ? user.role : "");
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -17,7 +18,7 @@ const MyForm = ({ user }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Sending form");
-    console.log(name + "\n" + email + "\n" + bio);
+    console.log(name + "\n" + email + "\n" + bio + "\n" + role);
 
     // validation
     // sent
@@ -58,14 +59,30 @@ const MyForm = ({ user }) => {
           />
         </label>
         {/* 8 - textarea */}
-        <span>Bio:</span>
-        <textarea
-          id="bio"
-          name="bio"
-          placeholder="User description"
-          onChange={(e) => setBio(e.target.value)}
-          value={bio}
-        ></textarea>
+        <label>
+          <span>Bio:</span>
+          <textarea
+            id="bio"
+            name="bio"
+            placeholder="User description"
+            onChange={(e) => setBio(e.target.value)}
+            value={bio}
+          ></textarea>
+        </label>
+        {/* 9 - select */}
+        <label>
+          <span>Function in system</span>
+          <select
+            name="role"
+            onChange={(e) => setRole(e.target.value)}
+            value={role}
+          >
+            <option value="user">User</option>
+            <option value="editor">Editor</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </label>
+
         <input className="buttondek" type="submit" value="Register!" />
       </form>
     </div>
